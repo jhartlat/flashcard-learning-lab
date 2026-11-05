@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ deck.title }} · Learning Lab{% endblock %}
+{% block content %}
+<div class="study-heading"><a href="{{ url_for('home') }}">← All decks</a><p class="eyebrow">{{ deck.tag }}</p><h1>{{ deck.title }}</h1><p class="muted">Try to recall the answer, then check it. Capitalization and outer spaces don't matter.</p></div>
+{% if cards %}
+<noscript><p class="notice">Enable JavaScript to use the interactive study session. You can still read the field notes.</p></noscript>
+<section id="study" class="study-shell" data-check-url="{{ url_for('check', deck=deck_id) }}">
+  <div class="progress-label"><span id="position"></span><span id="score">0 correct</span></div><progress id="progress" value="0" max="{{ cards|length }}" aria-label="Cards completed"></progress>
+  <div class="study-card"><p class="eyebrow" id="card-label">THINK IT THROUGH</p><h2 id="question" tabindex="-1"></h2><form id="answer-form"><label for="guess">Your answer</label><input id="guess" name="guess" maxlength="2000" autocomplete="off" placeholder="Take your best guess…"><div class="actions"><button class="button" type="submit">Check answer</button><button class="button secondary" type="button" id="reveal">Reveal answer</button></div></form><div id="feedback" role="status" aria-live="polite" hidden></div><button id="next" class="button" hidden>Next card →</button></div>
+  <p class="study-tip">Revealed answers count as practice, not correct answers. This session stays in this tab; refreshing starts over.</p>
+</section>
+<section id="results" class="study-card results" hidden><p class="eyebrow">SESSION COMPLETE</p><h2>Look what you learned.</h2><p id="result-score" class="result-score"></p><p id="result-copy"></p><div class="actions"><button id="retry" class="button">Practice missed cards</button><a class="button secondary" href="{{ url_for('study', deck=deck_id) }}">Start again</a><a href="{{ url_for('home') }}">All decks →</a></div></section>
+<script id="cards-data" type="application/json">{{ cards|tojson }}</script>
+{% else %}<div class="study-card"><h2>This deck is waiting for cards.</h2><p>Add valid question|answer lines to its file in the data folder, then reload.</p></div>{% endif %}
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='study.js') }}" defer></script>{% endblock %}

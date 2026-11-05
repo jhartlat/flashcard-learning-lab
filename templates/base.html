@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Flashcard Learning Lab{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header wrap">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-icon" aria-hidden="true">f.</span> Flashcard <span class="brand-light">Learning Lab</span></a>
+    <nav aria-label="Main navigation"><a href="{{ url_for('home') }}" {% if request.endpoint == 'home' %}aria-current="page"{% endif %}>Your decks</a><a href="{{ url_for('notes') }}" {% if request.endpoint == 'notes' %}aria-current="page"{% endif %}>Field notes</a></nav>
+  </header>
+  <main id="main" class="wrap">{% block content %}{% endblock %}</main>
+  <footer class="wrap footer"><span>Small steps. Stronger understanding.</span><span>A PYTHON LEARNING PROJECT</span></footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

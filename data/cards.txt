@@ -1,0 +1,3 @@
+What does CPU stand for?|Central Processing Unit
+What is 2 + 2?|4
+What does RAM stand for?|Random Access Memory

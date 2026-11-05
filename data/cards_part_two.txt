@@ -1,0 +1,36 @@
+Which Python type represents text?|str
+Which method removes whitespace from both ends of a string?|strip()
+What is the result of '  hello  '.strip()?|hello
+Which string method converts letters to lowercase?|lower()
+What does 'PyThOn'.lower() return?|python
+Which method separates a string into a list of parts?|split()
+What type does str.split() return?|list
+What does len(['a', 'b']) return?|2
+What is the index of the first item in a Python list?|0
+What does ['red', 'blue'][1] return?|blue
+What value should parse_card return for an invalid line?|None
+How many parts must a valid flashcard line contain?|2
+What dictionary key stores a flashcard question?|front
+What dictionary key stores a flashcard answer?|back
+What type stores a card with front and back keys?|dict
+What type does load_cards return?|list
+Which list method adds one item to the end?|append()
+What does load_cards return for an empty file?|[]
+Which text encoding does this project use?|UTF-8
+Which keyword starts a context manager that closes a file automatically?|with
+Which exception may occur when a file does not exist?|FileNotFoundError
+What type does an equality comparison return?|bool
+Which operator checks equality?|==
+What does ' cat '.strip().lower() return?|cat
+What type is the score returned by study_cards?|int
+Which keyword sends a value back to the caller of a function?|return
+Which built-in function displays text in the terminal?|print()
+Which Python module supplies this project's original test framework?|unittest
+Which web framework powers this project's browser interface?|Flask
+Which HTTP method retrieves a page?|GET
+Which HTTP method sends an answer to the checking endpoint?|POST
+Which data format carries the answer request to Flask?|JSON
+Which template engine does Flask use by default?|Jinja
+Which file lists the project's Python package dependency?|requirements.txt
+Which folder contains the unfinished assignment functions?|student
+Which folder contains the browser styles and JavaScript?|static

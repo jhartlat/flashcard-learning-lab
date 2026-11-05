@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div><p class="eyebrow">YOUR NEXT LITTLE BREAKTHROUGH</p><h1>Make it stick.<br><em>One card at a time.</em></h1><p class="intro">Turn a few quiet minutes into a clearer understanding of Python. Pick a deck, give it a try, and learn as you go.</p><a class="button" href="#decks">Find your first deck <span aria-hidden="true">↓</span></a></div>
+  <div class="hero-art" aria-hidden="true"><div class="paper back-paper"></div><div class="paper front-paper"><span class="eyebrow">A LITTLE PRACTICE GOES A LONG WAY</span><span class="code-art">“ hello ”<br><b>.strip()</b></span><span class="paper-answer">Less noise. More clarity. <span>↗</span></span></div><span class="art-label">LEARN → RECALL → REPEAT</span></div>
+</section>
+<section id="decks"><div class="section-heading"><div><p class="eyebrow">THE COLLECTION</p><h2>What will you learn today?</h2></div><span class="muted">2 decks · beginner friendly</span></div>
+<div class="deck-grid">{% for deck in decks %}<article class="deck-card"><div class="deck-top"><span class="tag">{{ deck.tag }}</span><span class="deck-number">0{{ loop.index }}</span></div><h3>{{ deck.title }}</h3><p>{{ deck.description }}</p><div class="deck-bottom"><span>{{ deck.count }} cards · self-paced</span><a class="round-link" href="{{ url_for('study', deck=deck.id) }}" aria-label="Study {{ deck.title }}">↗</a></div></article>{% endfor %}</div></section>
+<aside class="note-banner"><span class="note-icon" aria-hidden="true">✳</span><div><h3>Understanding beats memorizing.</h3><p>Before you flip a card, explain your answer out loud. The effort is part of the learning.</p></div><a href="{{ url_for('notes') }}">Explore field notes →</a></aside>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Field notes · Learning Lab{% endblock %}
+{% block content %}
+<div class="study-heading"><p class="eyebrow">UNDERSTAND THE WHY</p><h1>Your Python field notes.</h1><p class="intro">A small toolkit for turning raw text into something useful.</p></div>
+<div class="notes-grid">
+<article class="note-panel"><span class="tag">01 / STRINGS</span><h2>Clean, then split.</h2><p><code>strip()</code> removes whitespace at the edges. <code>split('|')</code> separates a line into parts. Neither changes the original string.</p><pre>'  CPU? | Processor  '.strip()
+# 'CPU? | Processor'
+'CPU? | Processor'.split('|')
+# ['CPU? ', ' Processor']</pre><p>Clean each part too. Validate that there are exactly two nonempty parts before building a card.</p></article>
+<article class="note-panel"><span class="tag">02 / DATA FLOW</span><h2>Know the shape.</h2><p>A line is a string. Splitting gives a list. A valid card is a dictionary with <code>front</code> and <code>back</code> keys.</p><pre>line → parts → valid card → deck
+str    list    dict         list</pre><p>Invalid lines return <code>None</code>. They should never become empty cards in your deck.</p></article>
+<article class="note-panel"><span class="tag">03 / FILES</span><h2>Open with care.</h2><p>A context manager closes a file even if an error happens. Use UTF-8 so accented letters can be read correctly.</p><pre>with open(path, encoding='utf-8') as source:
+    for line in source:
+        print(line.strip())</pre><p>An empty file is valid and produces an empty deck. A missing file is a different problem.</p></article>
+<article class="note-panel"><span class="tag">04 / TESTING</span><h2>Think beyond the happy path.</h2><p>Test missing delimiters, extra delimiters, empty answers, and whitespace. A test is a small, repeatable claim about behavior.</p><pre>' Q | A ' → valid
+'Q'       → invalid
+'Q|A|B'   → invalid
+'Q| '     → invalid</pre><p>Use the unchanged assignment tests while you implement the functions in <code>student/flashcards.py</code>.</p></article>
+</div><aside class="note-banner"><span class="note-icon">↗</span><div><h3>Try it without looking.</h3><p>The Part Two deck puts these ideas into practice. More examples and prompts live in lessons/02-python-and-flask.md.</p></div><a href="{{ url_for('study', deck='python') }}">Study Part Two →</a></aside>
+{% endblock %}
